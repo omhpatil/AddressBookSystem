@@ -50,4 +50,13 @@ public class AddressBook {
         }
     }
 
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    @Override
+    public String toString() {
+        return "AddressBook{" + "contacts=" + contacts + '}';
+    }
+
 }
