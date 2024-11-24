@@ -12,6 +12,17 @@ public class AddressBook {
         this.contacts.add(contact);
     }
 
+    public Contact editContact(String firstName, String lastName) {
+        for (Contact contact : contacts) {
+            if (contact.getFirstName().equalsIgnoreCase(firstName) &&
+                    contact.getLastName().equalsIgnoreCase(lastName)) {
+                return contact;
+            }
+        }
+        return null;
+    }
+
+
     public void displayContacts() {
         if (contacts.isEmpty()) {
             System.out.println("No contacts available.");
@@ -21,4 +32,5 @@ public class AddressBook {
             }
         }
     }
+
 }
