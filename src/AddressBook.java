@@ -22,6 +22,23 @@ public class AddressBook {
         return null;
     }
 
+    public boolean deleteContactByName(String firstName, String lastName) {
+        Contact contact = findContactByName(firstName, lastName);
+        if (contact != null) {
+            contacts.remove(contact);
+            return true;
+        }
+        return false;
+    }
+
+    public Contact findContactByName(String firstName, String lastName) {
+        for (Contact contact : contacts) {
+            if (contact.getFirstName().equalsIgnoreCase(firstName) && contact.getLastName().equalsIgnoreCase(lastName)) {
+                return contact;
+            }
+        }
+        return null;
+    }
 
     public void displayContacts() {
         if (contacts.isEmpty()) {

@@ -12,7 +12,8 @@ public class Main {
             System.out.println("1. Add New Contact");
             System.out.println("2. Display Contacts");
             System.out.println("3. Edit Contact");
-            System.out.println("4. Exit");
+            System.out.println("4. Delete Contact");
+            System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -29,9 +30,13 @@ public class Main {
                     editContact(scanner, addressBook);
                     break;
                 case 4:
+                    deleteContact(scanner, addressBook);
+                    break;
+                case 5:
                     exit = true;
                     System.out.println("Exiting Address Book. Goodbye!");
                     break;
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -114,6 +119,22 @@ public class Main {
             }
 
             System.out.println("Contact updated successfully!");
+        } else {
+            System.out.println("Contact not found.");
+        }
+    }
+
+    private static void deleteContact(Scanner scanner, AddressBook addressBook) {
+        System.out.print("Enter the First Name of the contact to delete: ");
+        String firstName = scanner.nextLine();
+
+        System.out.print("Enter the Last Name of the contact to delete: ");
+        String lastName = scanner.nextLine();
+
+        boolean isDeleted = addressBook.deleteContactByName(firstName, lastName);
+
+        if (isDeleted) {
+            System.out.println("Contact deleted successfully!");
         } else {
             System.out.println("Contact not found.");
         }
